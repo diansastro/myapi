@@ -1,5 +1,6 @@
 package com.ghost.myapi.config
 
+import com.ghost.myapi.service.UserService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -35,8 +36,8 @@ class AuthServerOAuth2Config extends AuthorizationServerConfigurerAdapter {
     @Autowired
     private AuthenticationManager authenticationManager
 
-//    @Autowired
-//    private UserService userService
+    @Autowired
+    private UserService userService
 
     @Autowired
     private PasswordEncoder oauthClientPasswordEncoder
@@ -75,6 +76,6 @@ class AuthServerOAuth2Config extends AuthorizationServerConfigurerAdapter {
     void configure(AuthorizationServerEndpointsConfigurer endpoints) {
         endpoints.tokenStore(tokenStore())
         .authenticationManager(authenticationManager)
-//        .userDetailsService(userService)
+        .userDetailsService(userService)
     }
 }

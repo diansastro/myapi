@@ -1,6 +1,7 @@
 package com.ghost.myapi.config
 
 import com.ghost.myapi.config.encryption.Encoders
+import com.ghost.myapi.service.UserService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.autoconfigure.security.SecurityProperties
 import org.springframework.context.annotation.Bean
@@ -23,8 +24,8 @@ import org.springframework.security.crypto.password.PasswordEncoder
 @Import(Encoders.class)
 class ServerSecurityConfig extends WebSecurityConfigurerAdapter {
 
-//    @Autowired
-//    private UserService userService
+    @Autowired
+    private UserService userService
 
     @Autowired
     private PasswordEncoder userPasswordEncoder
@@ -37,6 +38,6 @@ class ServerSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(userService).passwordEncoder(userPasswordEncoder)
+        auth.userDetailsService(userService).passwordEncoder(userPasswordEncoder)
     }
 }
