@@ -35,23 +35,23 @@ class User extends BaseModelEntity {
 
     UserStatus status
 
-    @OneToOne(mappedBy = "user", fetch = FetchType.EAGER, orphanRemoval = true)
-    Staff staff
-
-    @OneToOne(mappedBy = "user", fetch = FetchType.EAGER)
-    Lecturer lecturer
-
-    @OneToOne(mappedBy = "user", fetch = FetchType.EAGER)
-    Student student
-
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, orphanRemoval = true)
-    StudentLecturer studentLecturer
-
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    Set<UserFirebase> userFirebases
-
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    Set<NotificationLog> notificationLogs
+//    @OneToOne(mappedBy = "user", fetch = FetchType.EAGER, orphanRemoval = true)
+//    Staff staff
+//
+//    @OneToOne(mappedBy = "user", fetch = FetchType.EAGER)
+//    Lecturer lecturer
+//
+//    @OneToOne(mappedBy = "user", fetch = FetchType.EAGER)
+//    Student student
+//
+//    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, orphanRemoval = true)
+//    StudentLecturer studentLecturer
+//
+//    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+//    Set<UserFirebase> userFirebases
+//
+//    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+//    Set<NotificationLog> notificationLogs
 
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JsonManagedReference
